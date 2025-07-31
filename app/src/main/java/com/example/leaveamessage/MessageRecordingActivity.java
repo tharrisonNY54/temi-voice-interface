@@ -155,13 +155,13 @@ public class MessageRecordingActivity extends AppCompatActivity {
                 photoResId = R.drawable.dr_pierce_image;
                 break;
             case "dr_zenenga":
-                photoResId = R.drawable.dr_praise_image; // replace with dr_zenenga_image if available
+                photoResId = R.drawable.dr_praise_image;
                 break;
             case "dr_w-charles":
-                photoResId = R.drawable.dr_wcharles_image; // adjust file name if needed
+                photoResId = R.drawable.dr_wcharles_image;
                 break;
             case "mr_castro":
-                photoResId = R.drawable.mr_castro_image; // replace if you have castro image
+                photoResId = R.drawable.mr_castro_image;
                 break;
             default:
                 photoResId = R.drawable.ic_launcher_foreground;
@@ -180,7 +180,7 @@ public class MessageRecordingActivity extends AppCompatActivity {
         try {
             jsonParams.put("name", "Visitor via TEMI");
             jsonParams.put("message", messageContent);
-            jsonParams.put("to", "treyharrison@arizona.edu"); // Use the professor's actual email address
+            jsonParams.put("to", professorEmail);
         } catch (JSONException e) {
             e.printStackTrace();
             speakErrorOccurred();
@@ -193,7 +193,7 @@ public class MessageRecordingActivity extends AppCompatActivity {
         );
 
         Request request = new Request.Builder()
-                .url("https://temi-email-server.vercel.app/api/send-email")
+                .url("https://temi-email-server.onrender.com/api/send-email")
                 .post(body)
                 .build();
 
