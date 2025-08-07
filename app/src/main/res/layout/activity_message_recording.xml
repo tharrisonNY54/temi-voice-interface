@@ -3,34 +3,34 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="@drawable/gradient_background"
     android:gravity="center"
-    android:padding="32dp"
-    android:background="@drawable/gradient_background">
+    android:orientation="vertical"
+    android:padding="32dp">
 
     <!-- Header with Selected Professor -->
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="48dp"
+        app:cardBackgroundColor="#CC1E293B"
         app:cardCornerRadius="16dp"
-        app:cardElevation="8dp"
-        app:cardBackgroundColor="#CC1E293B">
+        app:cardElevation="8dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:padding="24dp"
-            android:gravity="center_vertical">
+            android:padding="24dp">
 
             <ImageView
                 android:id="@+id/selectedProfessorPhoto"
                 android:layout_width="64dp"
                 android:layout_height="64dp"
                 android:layout_marginEnd="16dp"
-                android:src="@drawable/dr_carter_image"
-                android:scaleType="centerCrop"  />
+                android:scaleType="centerCrop"
+                android:src="@drawable/dr_carter_image" />
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -41,28 +41,28 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
                     android:text="Recording message for:"
-                    android:textSize="14sp"
                     android:textColor="#BFDBFE"
-                    android:layout_marginBottom="4dp" />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/selectedProfessorName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-medium"
                     android:text="Dr. Brown"
-                    android:textSize="18sp"
                     android:textColor="#FFFFFF"
-                    android:fontFamily="sans-serif-medium" />
+                    android:textSize="18sp" />
             </LinearLayout>
 
             <ImageButton
                 android:id="@+id/backButton"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:scaleType="fitCenter"
                 android:background="@android:color/transparent"
-                android:src="@drawable/ic_arrow_back"/>
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_arrow_back" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
@@ -72,47 +72,46 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:orientation="vertical"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Record Your Message"
-            android:textSize="24sp"
-            android:textColor="#FFFFFF"
+            android:layout_marginBottom="32dp"
             android:fontFamily="sans-serif-medium"
-            android:layout_marginBottom="32dp" />
+            android:text="Record Your Message"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp" />
 
         <!-- Microphone Button -->
         <ImageButton
             android:id="@+id/microphoneButton"
             android:layout_width="64dp"
             android:layout_height="64dp"
-            android:scaleType="fitCenter"
             android:background="@android:color/transparent"
-            android:src="@drawable/ic_microphone"
-             />
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_microphone" />
 
         <TextView
             android:id="@+id/recordingStatusText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tap to start recording"
-            android:textSize="18sp"
-            android:textColor="#BFDBFE"
+            android:layout_marginBottom="48dp"
             android:gravity="center"
-            android:layout_marginBottom="48dp" />
+            android:text="Tap to start recording"
+            android:textColor="#BFDBFE"
+            android:textSize="18sp" />
 
         <!-- Transcribed Message Display -->
         <androidx.cardview.widget.CardView
             android:id="@+id/transcriptCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="4dp"
+            android:visibility="gone"
             app:cardBackgroundColor="#CC374151"
-            android:visibility="gone">
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -123,56 +122,56 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
                     android:text="You said:"
-                    android:textSize="16sp"
                     android:textColor="#BFDBFE"
-                    android:layout_marginBottom="12dp" />
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/transcribedText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text=""
-                    android:textSize="18sp"
-                    android:textColor="#FFFFFF"
-                    android:minHeight="80dp"
+                    android:layout_marginBottom="24dp"
                     android:gravity="start"
-                    android:layout_marginBottom="24dp" />
+                    android:minHeight="80dp"
+                    android:text=""
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp" />
 
                 <!-- Action Buttons -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:orientation="horizontal">
 
                     <Button
                         android:id="@+id/tryAgainButton"
                         android:layout_width="0dp"
                         android:layout_height="56dp"
-                        android:layout_weight="1"
                         android:layout_marginEnd="12dp"
-                        android:text="Try Again"
-                        android:textSize="16sp"
-                        android:textColor="#FFFFFF"
-                        android:fontFamily="sans-serif-medium"
+                        android:layout_weight="1"
                         android:background="@drawable/try_again_button_background"
                         android:drawableStart="@drawable/ic_refresh"
-                        android:drawablePadding="8dp" />
+                        android:drawablePadding="8dp"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="Try Again"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp" />
 
                     <Button
                         android:id="@+id/sendMessageButton"
                         android:layout_width="0dp"
                         android:layout_height="56dp"
-                        android:layout_weight="1"
                         android:layout_marginStart="12dp"
-                        android:text="Send Message"
-                        android:textSize="16sp"
-                        android:textColor="#FFFFFF"
-                        android:fontFamily="sans-serif-medium"
+                        android:layout_weight="1"
                         android:background="@drawable/send_button_background"
                         android:drawableStart="@drawable/ic_send"
-                        android:drawablePadding="8dp" />
+                        android:drawablePadding="8dp"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="Send Message"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp" />
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>

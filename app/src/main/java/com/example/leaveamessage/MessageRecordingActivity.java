@@ -34,6 +34,8 @@ import okhttp3.Response;
 import java.util.ArrayList;
 import java.util.Locale;
 
+import com.robotemi.sdk.Robot;
+
 public class MessageRecordingActivity extends AppCompatActivity {
 
     private static final int REQUEST_RECORD_AUDIO_PERMISSION = 200;
@@ -44,12 +46,15 @@ public class MessageRecordingActivity extends AppCompatActivity {
     private ImageButton microphoneButton, backButton;
     private Button tryAgainButton, sendMessageButton;
     private CardView transcriptCard;
+    private Robot robot;
+
 
     private String professorName, professorEmail, professorId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        robot = Robot.getInstance();
         setContentView(R.layout.activity_message_recording);
 
         professorName = getIntent().getStringExtra("PROFESSOR_NAME");
@@ -79,6 +84,12 @@ public class MessageRecordingActivity extends AppCompatActivity {
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECORD_AUDIO}, REQUEST_RECORD_AUDIO_PERMISSION);
+        }
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECORD_AUDIO}, REQUEST_RECORD_AUDIO_PERMISSION);
+        } else {
+            // 👇 Auto-start speech recognition after a short delay
+            new android.os.Handler().postDelayed(this::startSpeechRecognition, 1000);
         }
     }
 
@@ -210,6 +221,10 @@ public class MessageRecordingActivity extends AppCompatActivity {
                     if (response.isSuccessful()) {
                         runOnUiThread(() -> {
                             Toast.makeText(MessageRecordingActivity.this, "Message sent to " + professorName, Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(Intent.ACTION_MAIN);
+                            intent.addCategory(Intent.CATEGORY_HOME);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(intent);
                             finish();
                         });
                     } else {
